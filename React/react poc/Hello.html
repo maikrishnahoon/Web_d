@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+     <!-- 1 link :  to detect changese and deflect to UI-->
+    <!-- 2 link :  to reflect actual show on UI -->
+    <!-- JSx : hybrid mixture of JS ans HTML used in react-->
+    
+    <!-- jsx rules  
+        1: can not use any loop;
+        2: can not use if/else or switch caes uses turnery opreator
+        3: vairable declarion is not allowed
+        4: onject can not be rendered array can be.
+        -->
+    <!-- babel: compiler => JSX=> js -->
+    <!-- 3 link :  to convert JSX code in JS  -->
+    <title>Document</title>
+</head>
+<body>
+    <div id='root'></div>
+</body>
+<script type="text/babel">
+//functional components not function
+// argument => props
+function Hello({person='Default',relative='default-value'})
+{
+    // let arr =['Harry','Ron'];   array can be rendered
+    // console.log(props);
+    function abc()          // js code just allowed here not in jsx
+    {
+        return 'abc'     
+    }
+    console.log(relative);
+    relative = 'nobody';
+    return(
+        // JSX Code
+        // if more than one element has to return then it is wrapped in  <React.Fragment>  
+            // function calling is allowed in jsx by using {fn()};     
+      <React.Fragment>  
+         
+        <h1>Hello {abc()}</h1>       
+        <h2>Hello2 {relative}</h2>
+        </React.Fragment>
+    )
+}
+// hellos is kind of parent on hello b/c is calling hello
+function Hellos()   // to call hello function multiple times
+{
+    return(
+    <React.Fragment>
+    <Hello person='Alexander' relative='everyone'/>
+    <Hello person='Henry'/>
+    <Hello/>
+    <Hello/>
+    </React.Fragment>
+    )
+}
+ReactDOM.render(<Hellos/>,document.getElementById('root'));  // to show on UI
+
+</script>
+</html>
